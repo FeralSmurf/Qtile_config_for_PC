@@ -96,6 +96,7 @@ layouts = [
         border_focus="#ADD8E6",
         border_normal="#000000",
         border_width=2,
+        margin = 2,
         name="",
     ),
     # layout.Max(),
