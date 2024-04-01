@@ -69,7 +69,15 @@ keys = [
     Key([mod], "F2", lazy.spawn("setxkbmap ro std"), desc="Change to RO-STD layout"),
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [
+    Group("1", label="1dev", spawn=["code"]),
+    Group("2", label="2edit", spawn=["alacritty -e nvim &"]),
+    Group("3", label="3www", spawn=["firefox"]),
+    Group("4", label="4sys", spawn=["allacritty -e ranger &"]),
+    Group("5", label="5docs", ),
+    Group("6", label="6media", spawn=["firefox youtube.com"] ),
+    Group("7", label="7games", ),
+]
 
 for i in groups:
     keys.extend(
@@ -115,7 +123,7 @@ screens = [
                 widget.CurrentLayout(),
                 widget.GroupBox(),
                 widget.Prompt(),
-                widget.WindowName(fmt="Showing: {}"),
+                widget.WindowName(fmt="Running: {}"),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
