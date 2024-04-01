@@ -73,9 +73,9 @@ groups = [
     Group("1", label="1dev", spawn=["code"]),
     Group("2", label="2edit", spawn=["alacritty -e nvim &"]),
     Group("3", label="3www", spawn=["firefox"]),
-    Group("4", label="4sys", spawn=["allacritty -e ranger &"]),
+    Group("4", label="4sys", ),
     Group("5", label="5docs", ),
-    Group("6", label="6media", spawn=["firefox youtube.com"] ),
+    Group("6", label="6media", spawn=["chromium youtube.com"] ),
     Group("7", label="7games", ),
 ]
 
