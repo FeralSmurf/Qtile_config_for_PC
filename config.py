@@ -3,6 +3,8 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
+from check_internet_widget import check_connectivity
+
 mod = "mod4"
 terminal = guess_terminal()
 
@@ -71,9 +73,9 @@ keys = [
 
 groups = [
     Group("1", label="1dev", spawn=["code"]),
-    Group("2", label="2edit", spawn=["alacritty -e nvim &"]),
+    Group("2", label="2edit", spawn=["alacritty"]),
     Group("3", label="3www", spawn=["firefox"]),
-    Group("4", label="4sys", spawn=["alacritty"]),
+    Group("4", label="4sys", spawn=["alacritty", "-e", "ranger"]),
     Group("5", label="5docs", ),
     Group("6", label="6media", spawn=["chromium youtube.com"] ),
     Group("7", label="7misc", ),
@@ -132,15 +134,17 @@ screens = [
                 ),
                 widget.Systray(),
                 widget.Clipboard(fmt="Clipped {} "),
-                widget.OpenWeather(location='Bucharest', format='{main_temp} °{units_temperature} ~ {main_feels_like}°{units_temperature}, {weather_details}, {pressure}hPa, {wind_speed}km/h, {humidity}%H, {sunrise}*', fmt='🏙️ {}'),
+                widget.GenPollText(fmt="📡 status: {} ", func=check_connectivity, update_interval=10),
+                widget.OpenWeather(location='Bucharest', format='{main_temp} °{units_temperature} ~ {main_feels_like}°{units_temperature}, {weather_details}, {pressure}hPa, {wind_speed}km/h, {humidity}%H, {sunrise}|{sunset}', fmt='🏙️ {}'),
                 widget.DF(
                     visible_on_warn=False,
                     fmt="💾 {} ",
                     format="{uf}{m}|{r:.1f}{m}|{r:.0f}%",
                     partition="/",
                 ),
-                widget.Memory(fmt = '🐏 {}', measure_mem='G', format='{MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}'),
-                widget.CPU(fmt = '🧠 {}', format = '{freq_current}GHz {load_percent}%'),
+                widget.Memory(fmt = '🐏 {}', measure_mem='G', format='{MemUsed:.0f}{mm}|{MemTotal:.0f}{mm}'),
+                widget.CPU(fmt = '🧠 {}', format = '{freq_current}GHz|{load_percent}%', width = 120),
+                # widget.ThermalSensor(fmt="🔥 {}", tag_sensor="Package id 0"),
                 widget.Volume(fmt="📢 {}"),
                 widget.Clock(format="%Y.%m.%d %a %I:%M", fmt="⏳️ {} "),
                 widget.KeyboardLayout(fmt="👅 {} ", configured_keyboards=["us", "ro"]),
