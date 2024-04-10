@@ -125,7 +125,7 @@ screens = [
                 widget.CurrentLayout(),
                 widget.GroupBox(),
                 widget.Prompt(),
-                widget.WindowName(fmt="Running: {}"),
+                widget.WindowName(),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -134,7 +134,7 @@ screens = [
                 ),
                 widget.Systray(),
                 widget.Clipboard(fmt="Clipped {} "),
-                widget.GenPollText(fmt="📡 status: {} ", func=check_connectivity, update_interval=10),
+                widget.GenPollText(func=check_connectivity, update_interval=10),
                 widget.OpenWeather(location='Bucharest', format='{main_temp} °{units_temperature} ~ {main_feels_like}°{units_temperature}, {weather_details}, {pressure}hPa, {wind_speed}km/h, {humidity}%H, {sunrise}|{sunset}', fmt='🏙️ {}'),
                 widget.DF(
                     visible_on_warn=False,
