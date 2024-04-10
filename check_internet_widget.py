@@ -5,5 +5,5 @@ def check_connectivity():
         subprocess.check_call(['ping', '-c', '1', '8.8.8.8'], stdout=subprocess.DEVNULL)
         return "🌐 143"
     except subprocess.CalledProcessError:
-        return "🔴🔴🔴 No Internetz?"
+        return "🔴 No Internetz?"
 

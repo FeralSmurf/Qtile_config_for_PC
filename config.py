@@ -66,9 +66,18 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawn("rofi -show run"), desc="rofi"),
-    # language
+
+    ############
+    # language #
+    ############
     Key([mod], "F1", lazy.spawn("setxkbmap us"), desc="Change to US layout"),
     Key([mod], "F2", lazy.spawn("setxkbmap ro std"), desc="Change to RO-STD layout"),
+
+    ##############
+    # Media keys #
+    ##############
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer sset Master 5%-"), desc="Lower Volume by 5%"),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer sset Master 5%+"), desc="Raise Volume by 5%"),
 ]
 
 groups = [
