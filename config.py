@@ -80,14 +80,16 @@ keys = [
     Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer sset Master 5%+"), desc="Raise Volume by 5%"),
 ]
 
+groups = [Group(i) for i in "123456789"]
+
 groups = [
-    Group("1", label="1dev", spawn=["code"]),
-    Group("2", label="2edit", spawn=["alacritty"]),
-    Group("3", label="3www", spawn=["firefox"]),
-    Group("4", label="4sys", spawn=["alacritty", "-e", "ranger"]),
-    Group("5", label="5docs", ),
-    Group("6", label="6media", spawn=["chromium youtube.com"] ),
-    Group("7", label="7misc", ),
+    Group("1", label="1 dev", spawn=["code"]),
+    Group("2", label="2 edit", spawn=["alacritty"]),
+    Group("3", label="3 www", spawn=["firefox"]),
+    Group("4", label="4 sys", spawn=["alacritty", "-e", "ranger"]),
+    Group("5", label="5 docs", ),
+    Group("6", label="6 media", spawn=["chromium youtube.com"] ),
+    Group("7", label="7 misc", ),
 ]
 
 for i in groups:
@@ -112,7 +114,7 @@ for i in groups:
 
 layouts = [
     layout.Columns(
-        border_focus="#ADD8E6",
+        border_focus="#a6e3a1",
         border_normal="#1e1e2e",
         border_width=2,
         margin = 4,
@@ -132,7 +134,7 @@ screens = [
         top=bar.Bar(
             [
                 widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.GroupBox(this_current_screen_border="#a6e3a1", highlight_method="line", background="#1e1e2e", highlight_color="#1e1e2e"),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -144,7 +146,7 @@ screens = [
                 widget.Systray(),
                 widget.Clipboard(fmt="Clipped {} "),
                 widget.GenPollText(func=check_connectivity, update_interval=10),
-                widget.OpenWeather(location='Bucharest', format='{main_temp} °{units_temperature} ~ {main_feels_like}°{units_temperature}, {weather_details}, {pressure}hPa, {wind_speed}km/h, {humidity}%H, {sunrise}|{sunset}', fmt='🏙️ {}'),
+                widget.OpenWeather(location='Bucharest', format='{main_temp:.0f} °{units_temperature} ~ {main_feels_like:.0f}°{units_temperature}, {weather_details}, {pressure}hPa, {wind_speed}km/h, {humidity}%H, {sunrise}|{sunset}', fmt='🏙️ {}'),
                 widget.DF(
                     visible_on_warn=False,
                     fmt="💾 {} ",
@@ -156,7 +158,7 @@ screens = [
                 # widget.ThermalSensor(fmt="🔥 {}", tag_sensor="Package id 0"),
                 widget.Volume(fmt="📢 {}"),
                 widget.Clock(format="%Y.%m.%d %a %I:%M", fmt="⏳️ {} "),
-                widget.KeyboardLayout(fmt="👅 {} ", configured_keyboards=["us", "ro"]),
+                widget.KeyboardLayout(fmt="🎹 {} ", configured_keyboards=["us", "ro"]),
             ],
             24,
             background='#1e1e2e'
@@ -185,7 +187,7 @@ bring_front_click = False
 floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(
-        border_focus="#ADD8E6",
+        border_focus="#a6e3a1",
         border_normal="#1e1e2e",
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
