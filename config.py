@@ -134,7 +134,7 @@ screens = [
         top=bar.Bar(
             [
                 widget.CurrentLayout(),
-                widget.GroupBox(this_current_screen_border="#a6e3a1", highlight_method="line", background="#1e1e2e", highlight_color="#1e1e2e"),
+                widget.GroupBox(this_current_screen_border="#a6e3a1", highlight_method="line", background="#000000", highlight_color="#000000"),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -146,7 +146,7 @@ screens = [
                 widget.Systray(),
                 widget.Clipboard(fmt="Clipped {} "),
                 widget.GenPollText(func=check_connectivity, update_interval=10),
-                widget.OpenWeather(location='Bucharest', format='{main_temp:.0f} °{units_temperature} ~ {main_feels_like:.0f}°{units_temperature}, {weather_details}, {pressure}hPa, {wind_speed}km/h, {humidity}%H, {sunrise}|{sunset}', fmt='🏙️ {}'),
+                widget.OpenWeather(location='Bucharest', format='{main_temp:.0f} °{units_temperature}, {weather_details}, {pressure}hPa, {wind_speed:.0f}km/h, {humidity}%H, {sunrise}|{sunset}', fmt='🏙️ {}'),
                 widget.DF(
                     visible_on_warn=False,
                     fmt="💾 {} ",
@@ -161,7 +161,7 @@ screens = [
                 widget.KeyboardLayout(fmt="🎹 {} ", configured_keyboards=["us", "ro"]),
             ],
             24,
-            background='#1e1e2e'
+            background='#000000'
         ),
     ),
 ]
